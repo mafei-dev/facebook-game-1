@@ -11,8 +11,10 @@ import org.apache.batik.transcoder.TranscoderOutput;
 import org.apache.batik.transcoder.image.JPEGTranscoder;
 import org.apache.batik.transcoder.image.PNGTranscoder;
 import org.apache.commons.io.FileUtils;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.io.ClassPathResource;
 import org.springframework.core.io.Resource;
+import org.springframework.core.io.ResourceLoader;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -78,11 +80,13 @@ public class ImageController {
         return new ResponseEntity(getBase64File(genderFile.getFileName(), userData, genderFile.getLevel()), HttpStatus.OK);
     }
 
+    @Autowired
+    ResourceLoader resourceLoader;
 
     private Map getBase64File(String fileName, UserData userData, String level) throws IOException, TranscoderException {
         String uuid = UUID.randomUUID().toString();
         String temp_file = "./tmp/" + uuid + ".jpg";
-        Resource resource1 = new ClassPathResource("static/_1/templates/" + fileName);
+        Resource resource1 = resourceLoader.getResource("classpath:static/_1/templates/" + fileName);
         StringBuilder contentBuilder = new StringBuilder();
         Stream<String> stream = Files.lines(resource1.getFile().toPath(),
                 StandardCharsets.UTF_8);
