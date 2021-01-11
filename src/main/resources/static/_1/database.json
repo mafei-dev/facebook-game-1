@@ -1,0 +1,134 @@
+{
+  "male": [
+    {
+      "fileName": "template_1.svg",
+      "level": "1"
+    },
+    {
+      "fileName": "template_6.svg",
+      "level": "6"
+    },
+    {
+      "fileName": "template_11.svg",
+      "level": "11"
+    },
+    {
+      "fileName": "template_14.svg",
+      "level": "14"
+    },
+    {
+      "fileName": "template_17.svg",
+      "level": "17"
+    },
+    {
+      "fileName": "template_19.svg",
+      "level": "19"
+    },
+    {
+      "fileName": "template_20.svg",
+      "level": "20"
+    },
+    {
+      "fileName": "template_23.svg",
+      "level": "23"
+    },
+    {
+      "fileName": "template_29.svg",
+      "level": "29"
+    },
+    {
+      "fileName": "template_32.svg",
+      "level": "32"
+    },
+    {
+      "fileName": "template_no.svg",
+      "level": "0"
+    }
+  ],
+  "female": [
+    {
+      "fileName": "template_2.svg",
+      "level": "2"
+    },
+    {
+      "fileName": "template_3.svg",
+      "level": "3"
+    },
+    {
+      "fileName": "template_4.svg",
+      "level": "4"
+    },
+    {
+      "fileName": "template_5.svg",
+      "level": "5"
+    },
+    {
+      "fileName": "template_7.svg",
+      "level": "7"
+    },
+    {
+      "fileName": "template_9.svg",
+      "level": "9"
+    },
+    {
+      "fileName": "template_10.svg",
+      "level": "10"
+    },
+    {
+      "fileName": "template_12.svg",
+      "level": "12"
+    },
+    {
+      "fileName": "template_13.svg",
+      "level": "13"
+    },
+    {
+      "fileName": "template_16.svg",
+      "level": "16"
+    },
+    {
+      "fileName": "template_18.svg",
+      "level": "18"
+    },
+    {
+      "fileName": "template_20.svg",
+      "level": "20"
+    },
+    {
+      "fileName": "template_20.svg",
+      "level": "20"
+    },
+    {
+      "fileName": "template_24.svg",
+      "level": "24"
+    },
+    {
+      "fileName": "template_26.svg",
+      "level": "26"
+    },
+    {
+      "fileName": "template_27.svg",
+      "level": "27"
+    },
+    {
+      "fileName": "template_28.svg",
+      "level": "28"
+    },
+    {
+      "fileName": "template_30.svg",
+      "level": "30"
+    },
+    {
+      "fileName": "template_33.svg",
+      "level": "33"
+    },
+    {
+      "fileName": "template_34.svg",
+      "level": "34"
+    },
+    {
+      "fileName": "template_no.svg",
+      "level": "0"
+    }
+  ]
+}
