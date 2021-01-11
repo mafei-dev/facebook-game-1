@@ -11,8 +11,10 @@ import org.apache.batik.transcoder.TranscoderOutput;
 import org.apache.batik.transcoder.image.JPEGTranscoder;
 import org.apache.batik.transcoder.image.PNGTranscoder;
 import org.apache.commons.io.FileUtils;
+import org.apache.commons.io.IOUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.io.ClassPathResource;
+import org.springframework.core.io.FileSystemResourceLoader;
 import org.springframework.core.io.Resource;
 import org.springframework.core.io.ResourceLoader;
 import org.springframework.http.HttpHeaders;
@@ -22,6 +24,7 @@ import org.springframework.scheduling.annotation.Async;
 import org.springframework.web.bind.annotation.*;
 
 import java.io.*;
+import java.net.URL;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Paths;
@@ -80,18 +83,26 @@ public class ImageController {
         return new ResponseEntity(getBase64File(genderFile.getFileName(), userData, genderFile.getLevel()), HttpStatus.OK);
     }
 
-    @Autowired
-    ResourceLoader resourceLoader;
 
     private Map getBase64File(String fileName, UserData userData, String level) throws IOException, TranscoderException {
+        ResourceLoader resourceLoader = new FileSystemResourceLoader();
         String uuid = UUID.randomUUID().toString();
         String temp_file = "./tmp/" + uuid + ".jpg";
-        Resource resource1 = resourceLoader.getResource("classpath:static/_1/templates/" + fileName);
-        StringBuilder contentBuilder = new StringBuilder();
-        Stream<String> stream = Files.lines(resource1.getFile().toPath(),
+//        Resource resource1 = resourceLoader.getResource("classpath:static/_1/templates/" + fileName);
+//        InputStream inputStream = classLoader.getResourceAsStream("static/_1/templates/" + fileName);
+
+     /*   ClassLoader classLoader = getClass().getClassLoader();
+        File file = new File(classLoader.getResource("fileTest.txt").getFile());
+        String data = FileUtils.readFileToString(file, "UTF-8");
+*/
+        URL url = this.getClass().getClassLoader().getResource("static/_1/templates/" + fileName);
+        String fileContentString = IOUtils.toString(url.openStream());
+
+        /*StringBuilder contentBuilder = new StringBuilder();
+            Stream<String> stream = Files.lines(resources.nextElement().getPath(),
                 StandardCharsets.UTF_8);
-        stream.forEach(s -> contentBuilder.append(s));
-        String my_name = contentBuilder.toString()
+        stream.forEach(s -> contentBuilder.append(s));*/
+        String my_name = fileContentString
                 .replaceAll("#name", userData.getUsername())
                 .replaceAll("#level", level);
         InputStream targetStream = new ByteArrayInputStream(my_name.getBytes());
