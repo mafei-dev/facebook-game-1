@@ -5,6 +5,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.game._1.model.Database;
 import com.game._1.model.GenderFile;
 import com.game._1.model.UserData;
+import com.sun.deploy.util.SystemUtils;
 import org.apache.batik.transcoder.TranscoderException;
 import org.apache.batik.transcoder.TranscoderInput;
 import org.apache.batik.transcoder.TranscoderOutput;
@@ -87,7 +88,12 @@ public class ImageController {
     private Map getBase64File(String fileName, UserData userData, String level) throws IOException, TranscoderException {
         ResourceLoader resourceLoader = new FileSystemResourceLoader();
         String uuid = UUID.randomUUID().toString();
-        String temp_file = "./tmp/" + uuid + ".jpg";
+        String temp_file;
+        if (System.getProperty("os.name").toLowerCase().contains("linux")) {
+            temp_file = "/home/tmp/" + uuid + ".jpg";
+        } else {
+            temp_file = "./tmp/" + uuid + ".jpg";
+        }
 //        Resource resource1 = resourceLoader.getResource("classpath:static/_1/templates/" + fileName);
 //        InputStream inputStream = classLoader.getResourceAsStream("static/_1/templates/" + fileName);
 
